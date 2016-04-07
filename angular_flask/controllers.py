@@ -14,7 +14,6 @@ from angular_flask.models import *
 @app.route('/')
 @app.route('/competitions')
 @app.route('/join')
-# @app.route('/recommendations')
 def basic_pages(**kwargs):
     return make_response(open('angular_flask/templates/index.html').read())
 
