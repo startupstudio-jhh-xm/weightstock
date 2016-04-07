@@ -1,6 +1,13 @@
 // /* Controllers */
 
-var IndexController = function($scope) {
+var IndexController = function($scope, $location) {
+  $location.path('/competitions');
+};
+
+var CompetitionsController = function($scope, $location) {
+};
+
+var JoinController = function($scope, $location) {
 };
 
 var dateIfy = function(arr) {

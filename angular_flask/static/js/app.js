@@ -16,38 +16,14 @@ angular.module('AngularFlask', ['ngRoute', 'angularFlaskServices', 'angularFlask
 	.when('/', {
 		templateUrl: 'static/partials/landing.html',
 		controller: IndexController,
-    // resolve: {
-    //   data: function (dataStore) {
-    //     if (!init) {
-    //       init = true;
-    //       return dataStore.init();
-    //     }
-    //   }
-    // }
 	})
   .when('/competitions', {
     templateUrl: 'static/partials/competitions.html',
-    controller: IndexController,
-    // resolve: {
-    //   data: function (dataStore) {
-    //     if (!init) {
-    //       init = true;
-    //       return dataStore.init();
-    //     }
-    //   }
-    // }
+    controller: CompetitionsController,
   })
   .when('/join', {
     templateUrl: 'static/partials/join.html',
-    controller: IndexController,
-    // resolve: {
-    //   data: function (dataStore) {
-    //     if (!init) {
-    //       init = true;
-    //       return dataStore.init();
-    //     }
-    //   }
-    // }
+    controller: JoinController,
   })
 	.otherwise({
 		redirectTo: '/competitions'
