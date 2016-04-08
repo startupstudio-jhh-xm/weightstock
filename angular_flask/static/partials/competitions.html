@@ -6,12 +6,6 @@
   <div class="medium-10 columns">
     <div class="row small-up-2 large-up-4">
       <div class="column" ng-repeat="pool in pools">
-<<<<<<< Updated upstream
-        <img class="thumbnail" ng-src="{{ pool.data.picture }}">
-        <h5>{{ pool.data.name }}</h5>
-        <p>Current Pool Size: ${{ pool.data.pot }}</p>
-        <a href="/join/{{$index}}" class="button expanded" ng-class="{secondary: pool.joined}">Join</a>
-=======
         <div class="panel panel-primary">  
           <div class="panel-heading">
             <h5>{{ pool.data.type}}</h5>
@@ -28,7 +22,6 @@
             <a href="/join/{{$index}}" class="button expanded" ng-class="{secondary: pool.joined}">Join</a>
           </div>
         </div>
->>>>>>> Stashed changes
       </div>
     </div>
   </div>
