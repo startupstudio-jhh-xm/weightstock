@@ -22,19 +22,16 @@ var JoinController = function($scope, $location, $route, dataStore, $timeout) {
     dataStore.pools[poolId].data.players++;
     dataStore.pools[poolId].data.pot += dataStore.pools[poolId].data.low_bet;
 
-    // TODO: fix timeout hack
-    // Change Timeout
-    $timeout(function() {
-      console.log(dataStore.pools);
+    $scope.fireStart = function() {
       dataStore.pools[poolId].start = true;
       dataStore.pools[poolId].data.investors += dataStore.started.investors;
       dataStore.pools[poolId].data.pot += (dataStore.started.investors * dataStore.pools[poolId].data.low_friend_bet);
+    };
 
-      $timeout(function() {
-        dataStore.pools[poolId].end = true;
-        dataStore.ended.reward = (0.5 * dataStore.ended.portion).toFixed(2);
-      }, 10000);
-    }, 5000);
+    $scope.fireEnd = function() {
+      dataStore.pools[poolId].end = true;
+      dataStore.ended.reward = (0.5 * dataStore.ended.portion).toFixed(2);
+    };
   };
 
 

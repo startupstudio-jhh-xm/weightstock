@@ -14,7 +14,7 @@
       <img class="thumbnail" ng-src="{{ pool.data.picture }}">
       </div>
       <div class="medium-5 large-7 columns">
-        
+
         <h3>{{ pool.data.name }}</h3>
         <table>
               <thead>
@@ -77,13 +77,14 @@
     <div class="column row" ng-show="pool.joined">
       <hr>
       <ul class="tabs" data-tabs id="example-tabs">
-        <li class="tabs-title is-active" ng-show="!pool.start"><a href="#panel1" aria-selected="true">Investors</a></li>
-        <li class="tabs-title is-active" ng-show="pool.start && !pool.end"><a href="#panel2">Progress</a></li>
-        <!-- make this more robust -->
-        <li class="tabs-title is-active" ng-show="pool.end && pool.start"><a href="#panel3">Results</a></li>
+        <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Investors</a></li>
+        <!-- TODO: change this -->
+        <li class="tabs-title"><a href="#panel2" ng-click="fireStart()">Progress</a></li>
+        <!-- TODO: make this more robust -->
+        <li class="tabs-title"><a href="#panel3" ng-click="fireEnd()">Results</a></li>
       </ul>
       <div class="tabs-content" data-tabs-content="example-tabs">
-        <div class="tabs-panel is-active" ng-show="!pool.start" id="panel1">
+        <div class="tabs-panel is-active" id="panel1">
           <h4>Invite Friends to Invest in Your Progress</h4>
           <div class="row medium-up-3 large-up-5">
             <div class="column" ng-repeat="friend in user.friends">
@@ -96,7 +97,7 @@
           </div>
         </div>
 
-        <div class="tabs-panel is-active" id="panel2" ng-show="pool.start && !pool.end">
+        <div class="tabs-panel" id="panel2">
           <h4>To Pool End</h4>
           <div class="progress" role="progressbar" tabindex="0" aria-valuenow="{{ started.to_end }}" aria-valuemin="0" aria-valuetext="{{ started.to_end }} percent" aria-valuemax="100">
             <span class="progress-meter" style="width: {{ started.to_end }}%">
@@ -129,7 +130,7 @@
           </div>
         </div>
 
-        <div class="tabs-panel is-active" id="panel3" ng-show="pool.end && pool.start">
+        <div class="tabs-panel" id="panel3">
           <h4>Pool: Complete!</h4>
           <h4>Weight Goal: Success!</h4>
           <hr>
