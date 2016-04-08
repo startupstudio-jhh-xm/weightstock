@@ -1,0 +1,12 @@
+{
+  "investors": 2,
+  "to_end": 90,
+  "to_goal": 91,
+  "goal": 148.5,
+  "last_weigh_in": 150 ,
+  "last_date": "XXXX",
+  "pounds_lost": 15,
+  "initial_weigh_in": 165,
+  "next_weigh_in": "XXXX",
+  "recents": [{"date": "XXXX", "weight": 150, "photo": "http://placehold.it/200x200"}, {"date": "YYYY", "weight": 155, "photo": "http://placehold.it/200x200"}, {"date": "AAAAA", "weight": 160, "photo": "http://placehold.it/200x200"}, {"date": "ZZZZ", "weight": 165, "photo": "http://placehold.it/200x200"}]
+}

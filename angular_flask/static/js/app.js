@@ -15,15 +15,32 @@ angular.module('AngularFlask', ['ngRoute', 'angularFlaskServices', 'angularFlask
 	$routeProvider
 	.when('/', {
 		templateUrl: 'static/partials/landing.html',
-		controller: IndexController,
+		controller: IndexController
 	})
   .when('/competitions', {
     templateUrl: 'static/partials/competitions.html',
     controller: CompetitionsController,
+    resolve: {
+      data: function (dataStore) {
+        if (!init) {
+          init = true;
+          return dataStore.init();
+        }
+      }
+    }
   })
-  .when('/join', {
+  .when('/join/:id', {
     templateUrl: 'static/partials/join.html',
     controller: JoinController,
+    resolve: {
+      // This is unnecessary but good for testing
+      data: function (dataStore) {
+        if (!init) {
+          init = true;
+          return dataStore.init();
+        }
+      }
+    }
   })
 	.otherwise({
 		redirectTo: '/competitions'

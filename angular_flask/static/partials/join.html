@@ -3,146 +3,112 @@
     <ul class="breadcrumbs">
     <li><a href="#">Home</a></li>
     <li><a href="/Competitions">Competitions</a></li>
-    <li><span class="show-for-sr">Current: </span>Name of Competition</li>
+    <li><span class="show-for-sr">Current: </span>{{pool.data.name}}</li>
     </ul>
   </nav>
 </div>
 <div class="row" id="content">
   <div class="medium-10 columns">
     <div class="row">
-      <div class="medium-6 columns">
-      <img class="thumbnail" src="http://placehold.it/650x350">
+      <div class="medium-5 columns">
+      <img class="thumbnail" ng-src="{{ pool.data.picture }}">
       </div>
-      <div class="medium-6 large-5 columns">
-        <h3>Name of Competition</h3>
-        <p>Description (5% in 4 weeks)</p>
-        <p>Pot: </p>
-        <p>Players: </p>
-        <p>Starting Date:</p>
-        <p>Ending Date:</p>
+      <div class="medium-5 large-7 columns">
+        <h3>{{ pool.data.name }}</h3>
+        <p>Description: {{ pool.data.description }}</p>
+        <p>Pot: ${{ pool.data.pot }}</p>
+        <p>Players: {{ pool.data.players }}</p>
+        <p>Investors: {{ pool.data.investors }}</p>
+        <p>Start Date: {{ pool.data.start_date }}</p>
+        <p>End Date: {{ pool.data.end_date }}</p>
         <label>Bet Size
-        <select>
-          <option value="Low">Low ($)</option>
-          <option value="Medium">Medium ($)</option>
-          <option value="High">High ($) - Not Enough Funds</option>
+        <select ng-show="!pool.joined">
+          <option value="Low">${{ pool.data.low_bet }}</option>
+          <option value="Medium" disabled>${{ pool.data.medium_bet }}</option>
+          <option value="High" disabled>${{ pool.data.high_bet }}</option>
+        </select>
+        <!-- TODO: THIS IS SO BAD -->
+        <select disabled ng-show="pool.joined">
+          <option value="Low">{{ pool.data.low_bet }} ($)</option>
         </select>
         </label>
-        <a href="#" class="button large expanded">Join Pool</a>
+        <a href="#" ng-class="{secondary: pool.joined, disabled: pool.joined}" class="button large expanded" ng-click="join()">Join Pool</a>
       </div>
     </div>
-    <div class="column row">
+    <div class="column row" ng-show="pool.joined">
       <hr>
       <ul class="tabs" data-tabs id="example-tabs">
-        <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Investors</a></li>
-        <li class="tabs-title"><a href="#panel2">Progress</a></li>
+        <li class="tabs-title is-active" ng-show="!pool.start"><a href="#panel1" aria-selected="true">Investors</a></li>
+        <li class="tabs-title is-active" ng-show="pool.start && !pool.end"><a href="#panel2">Progress</a></li>
+        <!-- make this more robust -->
+        <li class="tabs-title is-active" ng-show="pool.end && pool.start"><a href="#panel3">Results</a></li>
       </ul>
       <div class="tabs-content" data-tabs-content="example-tabs">
-        <div class="tabs-panel is-active" id="panel1">
+        <div class="tabs-panel is-active" ng-show="!pool.start" id="panel1">
+          <h4>Invite Friends to Invest in Your Progress</h4>
           <div class="row medium-up-3 large-up-5">
-            <h4>Invite Your Friends to Invest</h4>
-            <div class="column">
-              <img class="thumbnail" src="http://placehold.it/350x200">
-              <h5>Name <small>$22</small></h5>
-              <a href="#" class="button hollow tiny expanded">Invite</a>
-            </div>
-            <div class="column">
-              <img class="thumbnail" src="http://placehold.it/350x200">
-              <h5>Name <small>$22</small></h5>
-              <a href="#" class="button hollow tiny expanded">Invite</a>
-            </div>
-            <div class="column">
-              <img class="thumbnail" src="http://placehold.it/350x200">
-              <h5>Name <small>$22</small></h5>
-              <a href="#" class="button hollow tiny expanded">Invite</a>
-            </div>
-            <div class="column">
-              <img class="thumbnail" src="http://placehold.it/350x200">
-              <h5>Name <small>$22</small></h5>
-              <a href="#" class="button hollow tiny expanded">Invite</a>
-            </div>
-            <div class="column">
-              <img class="thumbnail" src="http://placehold.it/350x200">
-              <h5>Name <small>$22</small></h5>
-              <a href="#" class="button hollow tiny expanded">Invite</a>
-            </div>
-            <hr>
-            <div class="column">
-              <img class="thumbnail" src="http://placehold.it/350x200">
-              <h5>Name <small>$22</small></h5>
-              <a href="#" class="button hollow tiny expanded">Invite</a>
-            </div>
-            <div class="column">
-              <img class="thumbnail" src="http://placehold.it/350x200">
-              <h5>Name <small>$22</small></h5>
-              <a href="#" class="button hollow tiny expanded">Invite</a>
-            </div>
-            <div class="column">
-              <img class="thumbnail" src="http://placehold.it/350x200">
-              <h5>Name <small>$22</small></h5>
-              <a href="#" class="button hollow tiny expanded">Invite</a>
-            </div>
-            <div class="column">
-              <img class="thumbnail" src="http://placehold.it/350x200">
-              <h5>Name <small>$22</small></h5>
-              <a href="#" class="button hollow tiny expanded">Invite</a>
-            </div>
-            <div class="column">
-              <img class="thumbnail" src="http://placehold.it/350x200">
-              <h5>Name <small>$22</small></h5>
-              <a href="#" class="button hollow tiny expanded">Invite</a>
+            <div class="column" ng-repeat="friend in user.friends">
+              <img class="thumbnail" ng-src="{{ friend.pic }}">
+              <h5>{{ friend.name }} <small>${{pool.data.low_friend_bet}}</small></h5>
+              <!-- TODO: This is so bad -->
+              <a href="#" class="button hollow tiny expanded" ng-show="!friend.invited" ng-click="invite(friend)">Invite</a>
+              <a href="#" class="button hollow tiny expanded disabled" ng-show="friend.invited">Invited</a>
             </div>
           </div>
         </div>
 
-        <div class="tabs-panel" id="panel2">
-          <h4>Progress</h4>
+        <div class="tabs-panel is-active" id="panel2" ng-show="pool.start && !pool.end">
+          <h4>To Pool End</h4>
+          <div class="progress" role="progressbar" tabindex="0" aria-valuenow="{{ started.to_end }}" aria-valuemin="0" aria-valuetext="{{ started.to_end }} percent" aria-valuemax="100">
+            <span class="progress-meter" style="width: {{ started.to_goal }}%">
+              <p class="progress-meter-text">{{ started.to_end }}%</p>
+            </span>
+          </div>
+          <h4>To Weight Goal</h4>
+          <div class="progress" role="progressbar" tabindex="0" aria-valuenow="{{ started.to_goal }}" aria-valuemin="0" aria-valuetext="{{ started.to_goal }} percent" aria-valuemax="100">
+            <span class="progress-meter" style="width: {{ started.to_goal }}%">
+              <p class="progress-meter-text">{{ started.to_goal }}%</p>
+            </span>
+          </div>
           <hr>
-          <h5>To Pool End</h5>
-          <div class="progress" role="progressbar" tabindex="0" aria-valuenow="20" aria-valuemin="0" aria-valuetext="25 percent" aria-valuemax="100">
-            <span class="progress-meter" style="width: 25%">
-              <p class="progress-meter-text">25%</p>
-            </span>
-          </div>
-          <h5>To Weight Goal</h5>
-          <div class="progress" role="progressbar" tabindex="0" aria-valuenow="20" aria-valuemin="0" aria-valuetext="25 percent" aria-valuemax="100">
-            <span class="progress-meter" style="width: 25%">
-              <p class="progress-meter-text">25%</p>
-            </span>
-          </div>
-          <h6>Weight Goal: </h6>
-          <h6>Last Weigh-In: </h6>
-          <h6>Last Weigh-In Date: </h6>
-          <h6>Pounds Lost: </h6>
-          <h6>Starting Weight: </h6>
-          <label>Next Weigh-In Deadline: </label>
+          <h5>Weight Goal: {{ started.goal }}</h5>
+          <h5>Last Weigh-In: {{ started.last_weigh_in }}</h5>
+          <h5>Pounds Lost: {{ started.pounds_lost }}</h5>
+          <h5>Initial Weigh-In: {{ started.initial_weigh_in }}</h5>
+          <hr>
+          <label>Next Weigh-In Deadline: {{ started.next_weigh_in }}</label>
           <button class="button">Weigh-In Now</button>
-          <hr>
           <h4>Recent Weigh-Ins</h4>
-          <div class="media-object stack-for-small">
+          <div class="media-object stack-for-small" ng-repeat="recent in started.recents">
             <div class="media-object-section">
-              <img class="thumbnail" src="http://placehold.it/200x200">
+              <img class="thumbnail" ng-src="{{ recent.photo }}">
             </div>
             <div class="media-object-section">
-              <h5>Date</h5>
-              <p>Weight</p>
-            </div>
-          </div>
-          <div class="media-object stack-for-small">
-            <div class="media-object-section">
-              <img class="thumbnail" src="http://placehold.it/200x200">
-            </div>
-            <div class="media-object-section">
-            <h5>Date</h5>
-            <p>Weight</p>
+              <h5>Date: {{ recent.date }}</h5>
+              <p>Weight: {{ recent.weight }}</p>
             </div>
           </div>
-          <div class="media-object stack-for-small">
+        </div>
+
+        <div class="tabs-panel is-active" id="panel3" ng-show="pool.end && pool.start">
+          <h4>Pool: Complete!</h4>
+          <h4>Weight Goal: Success!</h4>
+          <hr>
+          <h5>Competition Success Rate: {{ ended.success }} / {{ pool.data.players }}</h5>
+          <h5>Pot Reward Portion: {{ ended.portion }}</h5>
+          <h5>Investors: {{ ended.investors }}</h5>
+          <h5>Your Reward: {{ ended.reward }}</h5>
+          <h5>Weight Goal: {{ ended.goal }}</h5>
+          <h5>Pounds Lost: {{ ended.pounds_lost }} / {{ ended.initial_weigh_in}}</h5>
+          <hr>
+          <h4>Start/End Weigh-In</h4>
+          <div class="media-object stack-for-small" ng-repeat="recent in ended.recents">
             <div class="media-object-section">
-              <img class="thumbnail" src="http://placehold.it/200x200">
+              <img class="thumbnail" ng-src="{{ recent.photo }}">
             </div>
             <div class="media-object-section">
-            <h5>Date</h5>
-            <p>Weight</p>
+              <h5>Date: {{ recent.date }}</h5>
+              <p>Weight: {{ recent.weight }}</p>
             </div>
           </div>
         </div>
@@ -152,8 +118,8 @@
   <div class="medium-2 columns" data-sticky-container>
     <div class="sticky" data-sticky data-anchor="content">
       <dl>
-        <dt>Jonathan Huang</dt>
-        <dd><a href="#">$25.57</a> Balance</dd>
+        <dt>{{ user.username }}</dt>
+        <dd><a href="#">${{ user.balance }}</a> Balance</dd>
       </dl>
       <hr>
       <dl>

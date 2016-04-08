@@ -1,0 +1,34 @@
+[
+{
+  "name": "Thing",
+  "picture": "http://placehold.it/300x400",
+  "description": "Description (10% in 6 Months)",
+  "pot": 6300,
+  "players": 20,
+  "investors": 30,
+  "start_date": "Start Date",
+  "end_date": "End Date",
+  "low_bet": 150,
+  "medium_bet": "210 - NOT ENOUGH FUNDS",
+  "high_bet": "300 - NOT ENOUGH FUNDS",
+  "low_friend_bet": 50,
+  "medium_friend_bet": 70,
+  "high_friend_bet": 100
+},
+{
+  "name": "Thing2",
+  "picture": "http://placehold.it/300x400",
+  "description": "Description (10% in 6 Months)",
+  "pot": 6300,
+  "players": 20,
+  "investors": 30,
+  "start_date": "Start Date",
+  "end_date": "End Date",
+  "low_bet": 150,
+  "medium_bet": "210 - NOT ENOUGH FUNDS",
+  "high_bet": "300 - NOT ENOUGH FUNDS",
+  "low_friend_bet": 50,
+  "medium_friend_bet": 70,
+  "high_friend_bet": 100
+}
+]

@@ -1,0 +1,5 @@
+{
+  "username": "Jonathan Huang",
+  "balance": 200,
+  "friends": [{"name": "Tom", "pic" : "http://placehold.it/350x200"}, {"name": "Tom2", "pic" : "http://placehold.it/350x200"}, {"name": "Tom3", "pic" : "http://placehold.it/350x200"}]
+}
