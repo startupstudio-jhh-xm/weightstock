@@ -15,7 +15,8 @@
       </div>
       <div class="medium-5 large-7 columns">
         <h3>{{ pool.data.name }}</h3>
-        <p>Description: {{ pool.data.description }}</p>
+        <p>Description:</p>
+        <p>{{ pool.data.description }}</p>
         <p>Pot: ${{ pool.data.pot }}</p>
         <p>Players: {{ pool.data.players }}</p>
         <p>Investors: {{ pool.data.investors }}</p>
@@ -60,7 +61,7 @@
         <div class="tabs-panel is-active" id="panel2" ng-show="pool.start && !pool.end">
           <h4>To Pool End</h4>
           <div class="progress" role="progressbar" tabindex="0" aria-valuenow="{{ started.to_end }}" aria-valuemin="0" aria-valuetext="{{ started.to_end }} percent" aria-valuemax="100">
-            <span class="progress-meter" style="width: {{ started.to_goal }}%">
+            <span class="progress-meter" style="width: {{ started.to_end }}%">
               <p class="progress-meter-text">{{ started.to_end }}%</p>
             </span>
           </div>
@@ -95,9 +96,9 @@
           <h4>Weight Goal: Success!</h4>
           <hr>
           <h5>Competition Success Rate: {{ ended.success }} / {{ pool.data.players }}</h5>
-          <h5>Pot Reward Portion: {{ ended.portion }}</h5>
+          <h5>Pot Reward Portion: ${{ ended.portion }}</h5>
           <h5>Investors: {{ ended.investors }}</h5>
-          <h5>Your Reward: {{ ended.reward }}</h5>
+          <h5>Your Reward: ${{ ended.reward }}</h5>
           <h5>Weight Goal: {{ ended.goal }}</h5>
           <h5>Pounds Lost: {{ ended.pounds_lost }} / {{ ended.initial_weigh_in}}</h5>
           <hr>
@@ -124,7 +125,7 @@
       <hr>
       <dl>
         <dt><a href="#">Friends</a></dt>
-        <dd><img class="thumbnail" width="25" height = "25" ng-repeat="friend in user.friends" ng-src="{{ friend.pic }}"></dd>
+        <dd><img class="thumbnail" width="50" height = "50" ng-repeat="friend in user.friends" ng-src="{{ friend.pic }}"></dd>
         <hr>
         <dd><a href="#">Invite Friends</a></dd>
         <dd><textarea placeholder="Enter Email Address"></textarea></dd>

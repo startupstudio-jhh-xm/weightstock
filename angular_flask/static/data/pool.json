@@ -1,14 +1,14 @@
 [
 {
   "type": "Transformer",
-  "name": "Lose 10% in 6 Months",
+  "name": "New Years Resolution",
   "picture": "http://cf.ltkcdn.net/exercise/images/slide/131158-849x565r1-workout-tips.jpg",
-  "description": "Description (10% in 6 Months)",
+  "description": "You've made a resolution to truly change yourself, now do it. Participate in the journey to lose 10% of your body weight in 6 months. Join other weightstockers. Lose weight, stay motivated, and maybe reward yourself.",
   "pot": 6300,
   "players": 20,
   "investors": 30,
-  "start_date": "Start Date",
-  "end_date": "End Date",
+  "start_date": "January 1, 2016",
+  "end_date": "July 1, 2016",
   "low_bet": 150,
   "medium_bet": "210 - NOT ENOUGH FUNDS",
   "high_bet": "300 - NOT ENOUGH FUNDS",
