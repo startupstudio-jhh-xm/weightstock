@@ -8,5 +8,5 @@
   "pounds_lost": 15,
   "initial_weigh_in": 165,
   "next_weigh_in": "XXXX",
-  "recents": [{"date": "XXXX", "weight": 150, "photo": "http://placehold.it/200x200"}, {"date": "YYYY", "weight": 155, "photo": "http://placehold.it/200x200"}, {"date": "AAAAA", "weight": 160, "photo": "http://placehold.it/200x200"}, {"date": "ZZZZ", "weight": 165, "photo": "http://placehold.it/200x200"}]
+  "recents": [{"date": "XXXX", "weight": 150, "photo": "/static/img/user-4.png"}, {"date": "YYYY", "weight": 155, "photo": "/static/img/user-3.png"}, {"date": "AAAAA", "weight": 160, "photo": "/static/img/user-2.png"}, {"date": "ZZZZ", "weight": 165, "photo": "/static/img/user-1.png"}]
 }

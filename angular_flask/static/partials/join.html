@@ -81,7 +81,7 @@
           <h4>Recent Weigh-Ins</h4>
           <div class="media-object stack-for-small" ng-repeat="recent in started.recents">
             <div class="media-object-section">
-              <img class="thumbnail" ng-src="{{ recent.photo }}">
+              <img class="thumbnail" height="300px" width="200px" ng-src="{{ recent.photo }}">
             </div>
             <div class="media-object-section">
               <h5>Date: {{ recent.date }}</h5>
@@ -104,7 +104,7 @@
           <h4>Start/End Weigh-In</h4>
           <div class="media-object stack-for-small" ng-repeat="recent in ended.recents">
             <div class="media-object-section">
-              <img class="thumbnail" ng-src="{{ recent.photo }}">
+              <img class="thumbnail" height="300px" width ="200px" ng-src="{{ recent.photo }}">
             </div>
             <div class="media-object-section">
               <h5>Date: {{ recent.date }}</h5>
@@ -124,7 +124,7 @@
       <hr>
       <dl>
         <dt><a href="#">Friends</a></dt>
-        <dd>Find Pictures</dd>
+        <dd><img class="thumbnail" width="25" height = "25" ng-repeat="friend in user.friends" ng-src="{{ friend.pic }}"></dd>
         <hr>
         <dd><a href="#">Invite Friends</a></dd>
         <dd><textarea placeholder="Enter Email Address"></textarea></dd>

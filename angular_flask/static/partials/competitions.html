@@ -8,7 +8,7 @@
       <div class="column" ng-repeat="pool in pools">
         <img class="thumbnail" ng-src="{{ pool.data.picture }}">
         <h5>{{ pool.data.name }}</h5>
-        <p>${{ pool.data.pot }}</p>
+        <p>Current Pool Size: ${{ pool.data.pot }}</p>
         <a href="/join/{{$index}}" class="button expanded" ng-class="{secondary: pool.joined}">Join</a>
       </div>
     </div>
@@ -22,7 +22,7 @@
       <hr>
       <dl>
         <dt><a href="#">Friends</a></dt>
-        <dd>Find Pictures</dd>
+        <dd><img class="thumbnail" width="50" height = "50" ng-repeat="friend in user.friends" ng-src="{{ friend.pic }}"></dd>
         <hr>
         <dd><a href="#">Invite Friends</a></dd>
         <dd><textarea placeholder="Enter Email Address"></textarea></dd>
