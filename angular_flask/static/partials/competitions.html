@@ -6,22 +6,43 @@
   <div class="medium-10 columns">
     <div class="row small-up-2 large-up-4">
       <div class="column" ng-repeat="pool in pools">
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h5>{{ pool.data.type}}</h5>
-          </div>
+        <div class="panel panel-primary"> 
+            <a class="expanded warning button" href = "#"> {{ pool.data.type}} </a> 
           <div class="panel-body">
             <img class="thumbnail" ng-src="{{ pool.data.picture }}">
-            <ul class="list-group">
-              <li class="list-group-item list-group-item-success">{{ pool.data.name }}</li>
-              <li class="list-group-item list-group-item-info">Pot: ${{ pool.data.pot }}</li>
-              <li class="list-group-item list-group-item-warning">Players: {{ pool.data.players }}</li>
-              <li class="list-group-item list-group-item-danger">Investors: {{ pool.data.investors }}</li>
-              <li class="list-group-item">Bet: {{pool.data.low_bet}}</li>
-            </ul>
-            <a href="/join/{{$index}}" class="button expanded" ng-class="{secondary: pool.joined}">Join</a>
+            <table>
+              <thead>
+                <tr>
+                  <th width="500">{{ pool.data.goal }}</th>
+                </tr>
+              </thead>
+            </table>
+
+            <table class = "hover">
+              <tbody>
+                <tr>
+                  <td>Pot:</td>
+                  <td>${{ pool.data.pot }}</td>
+                </tr>
+                <tr>
+                  <td>Players:</td>
+                  <td>{{ pool.data.players }}</td>
+                </tr>
+                <tr>
+                  <td>Investors:</td>
+                  <td>{{ pool.data.investors }}</td>
+                </tr>
+                <tr>
+                  <td>Bet:</td>
+                  <td>${{ pool.data.bet }}</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <a href="/join/{{$index}}" class="button radius expanded" ng-class="{secondary: pool.joined}">Join</a>
           </div>
         </div>
+      
       </div>
     </div>
   </div>
