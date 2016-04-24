@@ -1,5 +1,5 @@
+[
 {
-  "investors": 2,
   "to_end": 70,
   "to_goal": 91,
   "goal": 148.5,
@@ -10,3 +10,4 @@
   "next_weigh_in": "05/14/2016",
   "recents": [{"date": "04/08/2016", "weight": 150, "photo": "/static/img/user-4.png"}, {"date": "03/10/2016", "weight": 155, "photo": "/static/img/user-3.png"}, {"date": "02/05/2016", "weight": 160, "photo": "/static/img/user-2.png"}, {"date": "01/07/2016", "weight": 165, "photo": "/static/img/user-1.png"}]
 }
+]

@@ -33,7 +33,7 @@
                 <tr>
                   <th width="500">Pot:</th>
                   <th width="500">Starting Pledge:</th>
-                  <th width="500">Players:</th>
+                  <th width="500">Backers:</th>
                 </tr>
               </thead>
               <tbody>
@@ -70,7 +70,7 @@
         <!-- TODO: change this -->
         <li class="tabs-title is-active"><a href="#panel2">Progress</a></li>
         <!-- TODO: make this more robust -->
-        <li class="tabs-title"><a href="#panel3" ng-click="fireEnd()">Results</a></li>
+        <li class="tabs-title" ng-show="{{ended.recents.length > 0}}"><a href="#panel3" ng-click="fireEnd()">Results</a></li>
       </ul>
 
       <div class="tabs-content" data-tabs-content="example-tabs">
@@ -105,7 +105,7 @@
           <hr>
           <label>Next Weigh-In Deadline: {{ started.next_weigh_in }}</label>
           <button class="button">Weigh-In Now</button>
-          <h4>Recent Weigh-Ins</h4>
+          <h4 ng-show="{{started.recents.length > 0}}">Recent Weigh-Ins</h4>
           <div class="media-object stack-for-small" ng-repeat="recent in started.recents">
             <div class="media-object-section">
               <img class="thumbnail" height="300px" width="200px" ng-src="{{ recent.photo }}">
@@ -117,7 +117,7 @@
           </div>
         </div>
 
-        <div class="tabs-panel" id="panel3">
+        <div class="tabs-panel" id="panel3" ng-show="{{ended.recents.length > 0}}">
           <h4>Success!</h4>
           <hr>
           <h5>Weight Goal: {{ ended.goal }}</h5>

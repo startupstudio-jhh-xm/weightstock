@@ -1,14 +1,10 @@
+[
 {
-  "investors": 2,
-  "to_end": 100,
-  "to_goal": 100,
   "goal": 148.5,
   "last_weigh_in": 147,
   "last_date": "07/07/2016",
   "pounds_lost": 18,
   "initial_weigh_in": 165,
-  "next_weigh_in": "N/A",
-  "success": 10,
-  "portion": 340,
   "recents": [{"date": "07/07/2016", "weight": 147, "photo": "/static/img/user-5.png"}, {"date": "01/07/2016", "weight": 165, "photo": "/static/img/user-1.png"}]
 }
+]

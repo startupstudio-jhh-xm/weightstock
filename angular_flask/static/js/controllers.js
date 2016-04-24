@@ -31,11 +31,12 @@ var CreateController = function($scope, $location, $route, dataStore, $timeout) 
     dataStore.user.balance -= pool.pledge;
     pool.pot = (pool.pledge + (pool.friends.length * pool.pledge) / 2).toFixed(2);
     pool.players = pool.friends.length;
-    pool.leader = 'Jonathan Huang';
+    pool.initiator = 'Jonathan Huang';
     pool.start_date = pool.startDate.toLocaleDateString();
     pool.end_date = pool.endDate.toLocaleDateString();
-
+    console.log(pool);
     dataStore.pools.push(formatPool(pool));
+
     $location.path('/join/' + poolId);
   };
 
@@ -52,9 +53,21 @@ var JoinController = function($scope, $location, $route, dataStore, $timeout) {
   $scope.user = dataStore.user;
   $scope.pool = dataStore.pools[poolId];
 
+  var defaultPoolState = {
+    "to_end": 0,
+    "to_goal": 0,
+    "goal": "N/A - Pending Weigh-In",
+    "last_weigh_in": "N/A - Pending Weigh-In" ,
+    "last_date":  $scope.pool.data.end_date || $scope.pool.data.endDate.toLocaleDateString(),
+    "pounds_lost": 0,
+    "initial_weigh_in": "N/A - Pending Weigh-In",
+    "next_weigh_in": $scope.pool.data.start_date || $scope.pool.data.startDate.toLocaleDateString(),
+    "recents": []
+  };
+
   // TODO: hacked friend count
   $scope.friends = $scope.pool.data.friends || $scope.user.friends;
 
-  $scope.started = dataStore.started;
-  $scope.ended = dataStore.ended;
+  $scope.started = dataStore.started[poolId] || defaultPoolState;
+  $scope.ended = dataStore.ended[poolId] || defaultPoolState;
 };
