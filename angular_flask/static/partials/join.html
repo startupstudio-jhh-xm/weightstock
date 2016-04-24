@@ -14,8 +14,7 @@
       <img class="thumbnail" ng-src="{{ pool.data.picture }}">
       </div>
       <div class="medium-5 large-7 columns">
-
-        <h3>{{ pool.data.name }}</h3>
+        <h3>{{ pool.data.initiator }}'s Challenge</h3>
         <table>
               <thead>
                 <tr>
@@ -33,15 +32,15 @@
               <thead>
                 <tr>
                   <th width="500">Pot:</th>
+                  <th width="500">Starting Pledge:</th>
                   <th width="500">Players:</th>
-                  <th width="500">Investors:</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>${{ pool.data.pot }}</td>
+                  <td>${{ pool.data.pledge }}</td>
                   <td>{{ pool.data.players }}</td>
-                  <td>{{ pool.data.investors }}</td>
                 </tr>
               </tbody>
         </table>
@@ -49,55 +48,43 @@
         <table>
               <thead>
                 <tr>
+                  <th width="500">Goal:</th>
                   <th width="500">Start Date:</th>
                   <th width="500">End Date:</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
+                  <td>{{ pool.data.goal }}%</td>
                   <td>{{ pool.data.start_date }}</td>
                   <td>{{ pool.data.end_date }}</td>
                 </tr>
               </tbody>
         </table>
-        <label>Bet Size:
-        <select ng-show="!pool.joined">
-          <option value="Low">${{ pool.data.low_bet }}</option>
-          <option value="Medium" disabled>${{ pool.data.medium_bet }}</option>
-          <option value="High" disabled>${{ pool.data.high_bet }}</option>
-        </select>
-        <!-- TODO: THIS IS SO BAD -->
-        <select disabled ng-show="pool.joined">
-          <option value="Low">{{ pool.data.low_bet }} ($)</option>
-        </select>
-        </label>
-        <a href="#" ng-class="{secondary: pool.joined, disabled: pool.joined}" class="button large expanded" ng-click="join()">Join Pool</a>
       </div>
     </div>
-    <div class="column row" ng-show="pool.joined">
+    <div class="column row">
       <hr>
       <ul class="tabs" data-tabs id="example-tabs">
-        <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Investors</a></li>
+        <li class="tabs-title"><a href="#panel1" aria-selected="true">Backers</a></li>
         <!-- TODO: change this -->
-        <li class="tabs-title"><a href="#panel2" ng-click="fireStart()">Progress</a></li>
+        <li class="tabs-title is-active"><a href="#panel2">Progress</a></li>
         <!-- TODO: make this more robust -->
         <li class="tabs-title"><a href="#panel3" ng-click="fireEnd()">Results</a></li>
       </ul>
+
       <div class="tabs-content" data-tabs-content="example-tabs">
-        <div class="tabs-panel is-active" id="panel1">
-          <h4>Invite Friends to Invest in Your Progress</h4>
+        <div class="tabs-panel" id="panel1">
+          <h4>Team Backers</h4>
           <div class="row medium-up-3 large-up-5">
-            <div class="column" ng-repeat="friend in user.friends">
+            <div class="column" ng-repeat="friend in friends">
               <img class="thumbnail" ng-src="{{ friend.pic }}">
-              <h5>{{ friend.name }} <small>${{pool.data.low_friend_bet}}</small></h5>
-              <!-- TODO: This is so bad -->
-              <a href="#" class="button hollow tiny expanded" ng-show="!friend.invited" ng-click="invite(friend)">Invite</a>
-              <a href="#" class="button hollow tiny expanded disabled" ng-show="friend.invited">Invited</a>
+              <h5>{{friend.name}} <small>${{pool.data.pledge/2}}</small></h5>
             </div>
           </div>
         </div>
 
-        <div class="tabs-panel" id="panel2">
+        <div class="tabs-panel is-active" id="panel2">
           <h4>To Pool End</h4>
           <div class="progress" role="progressbar" tabindex="0" aria-valuenow="{{ started.to_end }}" aria-valuemin="0" aria-valuetext="{{ started.to_end }} percent" aria-valuemax="100">
             <span class="progress-meter" style="width: {{ started.to_end }}%">
@@ -131,13 +118,8 @@
         </div>
 
         <div class="tabs-panel" id="panel3">
-          <h4>Pool: Complete!</h4>
-          <h4>Weight Goal: Success!</h4>
+          <h4>Success!</h4>
           <hr>
-          <h5>Competition Success Rate: {{ ended.success }} / {{ pool.data.players }}</h5>
-          <h5>Pot Reward Portion: ${{ ended.portion }}</h5>
-          <h5>Investors: {{ ended.investors }}</h5>
-          <h5>Your Reward: ${{ ended.reward }}</h5>
           <h5>Weight Goal: {{ ended.goal }}</h5>
           <h5>Pounds Lost: {{ ended.pounds_lost }} / {{ ended.initial_weigh_in}}</h5>
           <hr>
