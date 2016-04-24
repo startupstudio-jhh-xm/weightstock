@@ -8,6 +8,15 @@ require.config({
 
 var init = false;
 
+var setupData = {
+  data: function (dataStore) {
+    if (!init) {
+      init = true;
+      return dataStore.init();
+    }
+  }
+};
+
 angular.module('AngularFlask', ['ngRoute', 'angularFlaskServices', 'angularFlaskFilters'])
 .config([
 	'$routeProvider', '$locationProvider',
@@ -17,30 +26,20 @@ angular.module('AngularFlask', ['ngRoute', 'angularFlaskServices', 'angularFlask
 		templateUrl: 'static/partials/landing.html',
 		controller: IndexController
 	})
-  .when('/competitions', {
+  .when('/teams', {
     templateUrl: 'static/partials/competitions.html',
     controller: CompetitionsController,
-    resolve: {
-      data: function (dataStore) {
-        if (!init) {
-          init = true;
-          return dataStore.init();
-        }
-      }
-    }
+    resolve: setupData
+  })
+  .when('/create', {
+    templateUrl: 'static/partials/create.html',
+    controller: CreateController,
+    resolve: setupData
   })
   .when('/join/:id', {
     templateUrl: 'static/partials/join.html',
     controller: JoinController,
-    resolve: {
-      // This is unnecessary but good for testing
-      data: function (dataStore) {
-        if (!init) {
-          init = true;
-          return dataStore.init();
-        }
-      }
-    }
+    resolve: setupData
   })
 	.otherwise({
 		redirectTo: '/competitions'

@@ -1,0 +1,106 @@
+<div class="row columns">
+  <nav aria-label="You are here:" role="navigation">
+    <ul class="breadcrumbs">
+    <li><a href="#">Home</a></li>
+    <li><a href="/teams">Teams</a></li>
+    <li><span class="show-for-sr">Current: </span>Create</li>
+    </ul>
+  </nav>
+</div>
+<div class="row" id="content">
+  <div class="medium-10 columns">
+    <div class="row">
+      <div class="medium-5 large-7 columns">
+        <h3>Make a Goal, Create your Team</h3>
+        <table>
+              <thead>
+                <tr>
+                  <th width="500">Description:</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <textarea placeholder="Description" ng-model="pool.description"></textarea>
+                  </td>
+                </tr>
+              </tbody>
+        </table>
+
+        <table>
+              <thead>
+                <tr>
+                  <th width="500">Goal:</th>
+                  <th width="500">Pledge:</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><input type="number" placeholder="Weightloss Goal (%)" ng-model="pool.goal"></td>
+                  <td><input type="number" placeholder="Pledge ($)" ng-model="pool.pledge"></td>
+                </tr>
+              </tbody>
+        </table>
+
+        <table>
+              <thead>
+                <tr>
+                  <th width="500">Start Date:</th>
+                  <th width="500">End Date:</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><input type="date" ng-model="pool.startDate"></td>
+                  <td><input type="date" ng-model="pool.endDate"></td>
+                </tr>
+              </tbody>
+        </table>
+
+        <table>
+              <thead>
+                <tr>
+                  <th width="500">Invite Friends as Backers:</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                  <div class="row medium-up-3 large-up-5">
+                    <div class="column" ng-repeat="friend in user.friends">
+                      <img class="thumbnail" ng-src="{{ friend.pic }}">
+                      <h5>{{ friend.name }} </h5>
+                      <!-- <small>${{pool.data.low_friend_bet}}</small> -->
+                      <!-- TODO: This is so bad -->
+                      <a href="#" class="button hollow tiny expanded" ng-show="!friend.invited" ng-click="invite(friend)">Invite</a>
+                      <a href="#" class="button hollow tiny expanded disabled" ng-show="friend.invited">Invited</a>
+                    </div>
+                  </div>
+                  </td>
+                </tr>
+              </tbody>
+        </table>
+
+        <a href="#" class="button large expanded" ng-click="start()">Start</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="medium-2 columns" data-sticky-container>
+    <div class="sticky" data-sticky data-anchor="content">
+      <dl>
+        <dt>{{ user.username }}</dt>
+        <dd><a href="#">${{ user.balance }}</a> Balance</dd>
+      </dl>
+      <hr>
+      <dl>
+        <dt><a href="#">Friends</a></dt>
+        <dd><img class="thumbnail" width="50" height = "50" ng-repeat="friend in user.friends" ng-src="{{ friend.pic }}"></dd>
+        <hr>
+        <dd><a href="#">Invite Friends</a></dd>
+        <dd><textarea placeholder="Enter Email Address"></textarea></dd>
+      </dl>
+    </div>
+  </div>
+</div>
+<script src="/static/lib/bower_components/foundation-6.2.0-complete/js/app.js"></script>
