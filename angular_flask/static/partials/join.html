@@ -99,13 +99,13 @@
           </div>
           <hr>
           <h5>Weight Goal: {{ started.goal }}</h5>
-          <h5>Last Weigh-In: {{ started.last_weigh_in }}</h5>
+          <h5>Last Weight-In: {{ started.last_weigh_in }}</h5>
           <h5>Pounds Lost: {{ started.pounds_lost }}</h5>
-          <h5>Initial Weigh-In: {{ started.initial_weigh_in }}</h5>
+          <h5>Initial Weight-In: {{ started.initial_weigh_in }}</h5>
           <hr>
-          <label>Next Weigh-In Deadline: {{ started.next_weigh_in }}</label>
-          <button class="button">Weigh-In Now</button>
-          <h4 ng-show="{{started.recents.length > 0}}">Recent Weigh-Ins</h4>
+          <label>Next Weight-In Deadline: {{ started.next_weigh_in }}</label>
+          <a href= "/checkin" class="button">Weight-In Now</a>
+          <h4 ng-show="{{started.recents.length > 0}}">Recent Weight-Ins</h4>
           <div class="media-object stack-for-small" ng-repeat="recent in started.recents">
             <div class="media-object-section">
               <img class="thumbnail" height="300px" width="200px" ng-src="{{ recent.photo }}">

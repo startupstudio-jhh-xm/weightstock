@@ -14,6 +14,7 @@ from angular_flask.models import *
 @app.route('/')
 @app.route('/teams/')
 @app.route('/create/')
+@app.route('/checkin')
 @app.route('/join/<pool_id>')
 def basic_pages(**kwargs):
     return make_response(open('angular_flask/templates/index.html').read())

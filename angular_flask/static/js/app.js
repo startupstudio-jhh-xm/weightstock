@@ -41,6 +41,9 @@ angular.module('AngularFlask', ['ngRoute', 'angularFlaskServices', 'angularFlask
     controller: JoinController,
     resolve: setupData
   })
+  .when('/checkin', {
+    templateUrl: 'static/partials/checkin.html',
+  })
 	.otherwise({
 		redirectTo: '/competitions'
 	});
