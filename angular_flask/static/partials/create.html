@@ -70,8 +70,6 @@
                     <div class="column" ng-repeat="friend in user.friends">
                       <img class="thumbnail" ng-src="{{ friend.pic }}">
                       <h5>{{ friend.name }} </h5>
-                      <!-- <small>${{pool.data.low_friend_bet}}</small> -->
-                      <!-- TODO: This is so bad -->
                       <a href="#" class="button hollow tiny expanded" ng-show="!friend.invited" ng-click="invite(friend)">Invite</a>
                       <a href="#" class="button hollow tiny expanded disabled" ng-show="friend.invited">Invited</a>
                     </div>
