@@ -1,4 +1,4 @@
-<link rel="stylesheet" 
+<link rel="stylesheet"
       href="//cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css"/>
 
 <div class="row columns">
@@ -118,31 +118,22 @@
               <p>Weight: {{ recent.weight }}</p>
 
               <!-- Interaction -->
-              <script type="text/javascript">
-                var clicks = 0;
-                function onClick() {
-                  clicks += 1;
-                  document.getElementById("clicks").innerHTML = clicks;
-                };
-              </script>
               <div class="input-group">
-                <a class="input-group-button button" onClick="onClick()"> 
+                <a class="input-group-button button" ng-click="like(recent)">
                   <i class="fi-like size-36"></i>
                 </a>
                 <span class="input-group-label">
-                  <a id="clicks"> 0</a>
+                  <a> {{recent.likes}}</a>
                 </span>
               </div>
-              
               <div class="input-group">
-                <a class="input-group-button button" onClick="onClick()"> 
+                <a class="input-group-button button" ng-click="dislike(recent)">
                   <i class="fi-dislike size-36"></i>
                 </a>
                 <span class="input-group-label">
-                  <a id="clicks"> 0</a>
+                  <a> {{recent.dislikes}}</a>
                 </span>
               </div>
-            
             </div>
           </div>
         </div>

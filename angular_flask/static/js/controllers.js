@@ -18,6 +18,9 @@ var formatPool = function(el) {
   };
 };
 
+var CheckinController = function($scope, $location, $route, dataStore, $timeout) {
+};
+
 var CreateController = function($scope, $location, $route, dataStore, $timeout) {
   $scope.user = dataStore.user;
   $scope.pool = {};
@@ -68,6 +71,15 @@ var JoinController = function($scope, $location, $route, dataStore, $timeout) {
   // TODO: hacked friend count
   $scope.friends = $scope.pool.data.friends || $scope.user.friends;
 
+  console.log(dataStore.started[poolId]);
   $scope.started = dataStore.started[poolId] || defaultPoolState;
   $scope.ended = dataStore.ended[poolId] || defaultPoolState;
+
+  $scope.like = function(recent) {
+    recent.likes++;
+  };
+
+  $scope.dislike = function(recent) {
+    recent.dislikes++;
+  };
 };

@@ -43,6 +43,8 @@ angular.module('AngularFlask', ['ngRoute', 'angularFlaskServices', 'angularFlask
   })
   .when('/checkin', {
     templateUrl: 'static/partials/checkin.html',
+    controller: CheckinController,
+    resolve: setupData
   })
 	.otherwise({
 		redirectTo: '/competitions'
