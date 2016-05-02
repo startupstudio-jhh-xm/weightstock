@@ -28,6 +28,8 @@ var CreateController = function($scope, $location, $route, dataStore, $timeout) 
   var pool = $scope.pool;
   var poolId = dataStore.pools.length;
 
+  pool.friends = pool.friends || [];
+
   // need pot, players, initiator, goal, time
 
   $scope.start = function() {
@@ -43,10 +45,8 @@ var CreateController = function($scope, $location, $route, dataStore, $timeout) 
     $location.path('/join/' + poolId);
   };
 
-  // TODO: need to fix this bug
   $scope.invite = function(friend) {
     friend.invited = true;
-    pool.friends = pool.friends || [];
     pool.friends.push(friend);
   };
 };
@@ -71,7 +71,6 @@ var JoinController = function($scope, $location, $route, dataStore, $timeout) {
   // TODO: hacked friend count
   $scope.friends = $scope.pool.data.friends || $scope.user.friends;
 
-  console.log(dataStore.started[poolId]);
   $scope.started = dataStore.started[poolId] || defaultPoolState;
   $scope.ended = dataStore.ended[poolId] || defaultPoolState;
 
