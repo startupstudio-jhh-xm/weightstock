@@ -14,6 +14,8 @@ angular.module('angularFlaskServices', ['ngResource'])
       dataStore.started = started;
       dataStore.ended = ended;
 
+      dataStore.globalFund = 12345;
+
       dataStore.started.forEach(function(el) {
         el.recents.map(function(checkin) {
           checkin.likes = 0;

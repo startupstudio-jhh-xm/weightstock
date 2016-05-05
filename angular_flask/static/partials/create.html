@@ -56,7 +56,20 @@
                 </tr>
               </tbody>
         </table>
-
+        <table>
+              <thead>
+                <tr>
+                  <th width="500">Upload a Team Photo:</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                  <input type="file" class="file-input">
+                  </td>
+                </tr>
+              </tbody>
+        </table>
         <table>
               <thead>
                 <tr>
@@ -78,7 +91,6 @@
                 </tr>
               </tbody>
         </table>
-
         <a href="#" class="button large expanded" ng-click="start()">Start</a>
       </div>
     </div>
@@ -97,6 +109,11 @@
         <hr>
         <dd><a href="#">Invite Friends</a></dd>
         <dd><textarea placeholder="Enter Email Address"></textarea></dd>
+      </dl>
+      <hr>
+      <dl>
+        <dt><a href="#">Community Fund:</a></dt>
+        <dd><h3>${{globalFund}}</h3></dd>
       </dl>
     </div>
   </div>

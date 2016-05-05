@@ -107,7 +107,7 @@
           <h5>Initial Weight-In: {{ started.initial_weigh_in }}</h5>
           <hr>
           <label>Next Weight-In Deadline: {{ started.next_weigh_in }}</label>
-          <a href= "/checkin" class="button">Weight-In Now</a>
+          <a href= "/checkin/{{poolId}}" class="button">Weight-In Now</a>
           <h4 ng-show="{{started.recents.length > 0}}">Recent Weight-Ins</h4>
           <div class="media-object stack-for-small" ng-repeat="recent in started.recents">
             <div class="media-object-section">
@@ -172,6 +172,10 @@
         <hr>
         <dd><a href="#">Invite Friends</a></dd>
         <dd><textarea placeholder="Enter Email Address"></textarea></dd>
+      </dl>
+      <dl>
+        <dt><a href="#">Community Fund:</a></dt>
+        <dd><h3>${{globalFund}}</h3></dd>
       </dl>
     </div>
   </div>

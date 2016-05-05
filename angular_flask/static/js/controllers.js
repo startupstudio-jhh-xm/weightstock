@@ -7,6 +7,7 @@ var IndexController = function($scope, $location) {
 var CompetitionsController = function($scope, $location, dataStore) {
   $scope.user = dataStore.user;
   $scope.pools = dataStore.pools;
+  $scope.globalFund = dataStore.globalFund.toFixed(2);
 };
 
 var formatPool = function(el) {
@@ -18,12 +19,46 @@ var formatPool = function(el) {
   };
 };
 
-var CheckinController = function($scope, $location, $route, dataStore, $timeout) {
+var getDate = function() {
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth()+1; //January is 0!
+  var yyyy = today.getFullYear();
+  if(dd<10){
+      dd='0'+dd;
+  }
+  if(mm<10){
+      mm='0'+mm;
+  }
+
+  today = dd+'/'+mm+'/'+yyyy;
+
+  return today;
 };
 
-var CreateController = function($scope, $location, $route, dataStore, $timeout) {
+var CheckinController = function($scope, $location, $route, dataStore) {
+  var poolId = $route.current.params.id;
+  $scope.user = dataStore.user;
+  $scope.pool = dataStore.pools[poolId];
+
+  $scope.weighIn = function() {
+    console.log('holla');
+    var out = {};
+    out.date = getDate();
+    out.weight = $scope.weight;
+    out.photo = $scope.photo || '/static/img/jon-pool1.jpg';
+    out.likes = 0;
+    out.dislikes = 0;
+
+    dataStore.started[poolId].recents.unshift(out);
+  };
+};
+
+var CreateController = function($scope, $location, $route, dataStore) {
   $scope.user = dataStore.user;
   $scope.pool = {};
+
+  $scope.globalFund = dataStore.globalFund.toFixed(2);
 
   var pool = $scope.pool;
   var poolId = dataStore.pools.length;
@@ -33,13 +68,15 @@ var CreateController = function($scope, $location, $route, dataStore, $timeout) 
   // need pot, players, initiator, goal, time
 
   $scope.start = function() {
-    dataStore.user.balance -= pool.pledge;
+    dataStore.user.balance -= pool.pledge || 0;
     pool.pot = (pool.pledge + (pool.friends.length * pool.pledge) / 2).toFixed(2);
     pool.players = pool.friends.length;
     pool.initiator = 'Jonathan Huang';
     pool.start_date = pool.startDate.toLocaleDateString();
     pool.end_date = pool.endDate.toLocaleDateString();
     console.log(pool);
+
+    pool.picture = '/static/img/jon-pool1.jpg';
     dataStore.pools.push(formatPool(pool));
 
     $location.path('/join/' + poolId);
@@ -51,10 +88,13 @@ var CreateController = function($scope, $location, $route, dataStore, $timeout) 
   };
 };
 
-var JoinController = function($scope, $location, $route, dataStore, $timeout) {
+var JoinController = function($scope, $location, $route, dataStore) {
   var poolId = $route.current.params.id;
   $scope.user = dataStore.user;
   $scope.pool = dataStore.pools[poolId];
+  $scope.poolId = poolId;
+
+  $scope.globalFund = dataStore.globalFund.toFixed(2);
 
   var defaultPoolState = {
     "to_end": 0,
@@ -65,7 +105,7 @@ var JoinController = function($scope, $location, $route, dataStore, $timeout) {
     "pounds_lost": 0,
     "initial_weigh_in": "N/A - Pending Weigh-In",
     "next_weigh_in": $scope.pool.data.start_date || $scope.pool.data.startDate.toLocaleDateString(),
-    "recents": []
+    "recents": [],
   };
 
   // TODO: hacked friend count

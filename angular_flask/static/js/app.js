@@ -41,13 +41,13 @@ angular.module('AngularFlask', ['ngRoute', 'angularFlaskServices', 'angularFlask
     controller: JoinController,
     resolve: setupData
   })
-  .when('/checkin', {
+  .when('/checkin/:id', {
     templateUrl: 'static/partials/checkin.html',
     controller: CheckinController,
     resolve: setupData
   })
 	.otherwise({
-		redirectTo: '/competitions'
+		redirectTo: '/teams'
 	});
 	$locationProvider.html5Mode({
 		enabled: true,

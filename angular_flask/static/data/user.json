@@ -1,5 +1,6 @@
 {
   "username": "Jonathan Huang",
+  "picture": "/static/img/jon.jpg",
   "balance": 200,
   "friends": [{"name": "Dafi", "pic" : "/static/img/Dafi.jpg"}, {"name": "Jing", "pic" : "/static/img/Jing.jpg"}, {"name": "Xiaoyang", "pic" : "/static/img/Xiaoyang.jpg"}]
 }
