@@ -69,7 +69,7 @@ var CreateController = function($scope, $location, $route, dataStore) {
 
   $scope.start = function() {
     dataStore.user.balance -= pool.pledge || 0;
-    pool.pot = (pool.pledge + (pool.friends.length * pool.pledge) / 2).toFixed(2);
+    pool.pot = (pool.pledge * 2).toFixed(2);
     pool.players = pool.friends.length;
     pool.initiator = 'Jonathan Huang';
     pool.start_date = pool.startDate.toLocaleDateString();
