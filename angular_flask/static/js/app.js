@@ -17,7 +17,7 @@ var setupData = {
   }
 };
 
-angular.module('AngularFlask', ['ngRoute', 'angularFlaskServices', 'angularFlaskFilters'])
+angular.module('AngularFlask', ['ngRoute', 'angularFlaskServices', 'angularFlaskFilters', 'chart.js'])
 .config([
 	'$routeProvider', '$locationProvider',
 	function($routeProvider, $locationProvider, dataStore) {

@@ -99,11 +99,17 @@
               <p class="progress-meter-text">{{ started.to_goal }}%</p>
             </span>
           </div>
-          <hr>
           <h5>Weight Goal: {{ started.goal }}</h5>
           <h5>Last Weight-In: {{ started.last_weigh_in }}</h5>
           <h5>Pounds Lost: {{ started.pounds_lost }}</h5>
           <h5>Initial Weight-In: {{ started.initial_weigh_in }}</h5>
+          <div class="chartbox" ng-show="{{started.recents.length > 0}}">
+            <hr>
+            <h4>Progress</h4>
+            <canvas id="line" class="chart chart-line" chart-data="data" chart-options="options"
+              chart-labels="labels" chart-legend="true" chart-series="series">
+            </canvas>
+          </div>
           <hr>
           <label>Next Weight-In Deadline: {{ started.next_weigh_in }}</label>
           <a href= "/checkin/{{poolId}}" class="button">Weight-In Now</a>
@@ -135,13 +141,9 @@
                 </span>
               </div>
               <div class="input-group">
-                <span class="input-group-button" >
-                  <i ng-show="{{(recent.likes - recent.dislikes) < 0}}" class="fi-dislike size-36"></i>
-                  <i ng-show="{{(recent.likes - recent.dislikes) > 0}}" class="fi-like size-36"></i>
-                </span>
-                <span class="input-group-label">
-                  <h4> Score: {{recent.likes - recent.dislikes}}</h4>
-                </span>
+              <span ng-show="{{(recent.likes - recent.dislikes) == 0}}" class="button">Score: {{recent.likes - recent.dislikes}}</span>
+              <span ng-show="{{(recent.likes - recent.dislikes) > 0}}" class="success button">Score: +{{recent.likes - recent.dislikes}}</span>
+                <span ng-show="{{(recent.likes - recent.dislikes) < 0}}" class="alert button">Score: {{recent.likes - recent.dislikes}}</span>
               </div>
             </div>
           </div>

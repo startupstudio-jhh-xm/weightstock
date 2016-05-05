@@ -111,7 +111,7 @@ var JoinController = function($scope, $location, $route, dataStore) {
   $scope.friends = $scope.pool.data.friends || $scope.user.friends;
 
   $scope.started = dataStore.started[poolId] || defaultPoolState;
-  $scope.ended = dataStore.ended[poolId] || defaultPoolState;
+  // $scope.ended = dataStore.ended[poolId] || defaultPoolState;
 
   $scope.like = function(recent) {
     recent.likes++;
@@ -119,5 +119,27 @@ var JoinController = function($scope, $location, $route, dataStore) {
 
   $scope.dislike = function(recent) {
     recent.dislikes++;
+  };
+
+  var normedWeightDist = $scope.started.recents.map(function(el) {
+    return Math.abs(el.weight - dataStore.started[poolId].goal);
+  });
+
+  var minWeightDist = 0;
+  var maxWeightDist = Math.max.apply(null, normedWeightDist);
+
+  var scores = $scope.started.recents.map(function(el) {
+    return (el.likes - el.dislikes >= 0) ? maxWeightDist : minWeightDist;
+  });
+
+  // graph stuff
+  $scope.labels = $scope.started.recents.map(function(el) {
+    return el.date;
+  });
+  $scope.data = [scores, normedWeightDist];
+  $scope.series = ['Scaled Team Feedback', 'Distance from Goal'];
+  $scope.options = {
+    showTooltips: false,
+    tension: 0.1
   };
 };
