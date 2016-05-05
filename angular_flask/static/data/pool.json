@@ -10,5 +10,17 @@
   "goal": 10,
   "time": 20,
   "pledge": 20
+},
+{
+  "picture": "/static/img/eric.jpg",
+  "description": "Hey friends, trying to lose some weight this year. Was wondering if you'd be willing to help me maintain accountability. Hope you're in on my WeightStock!",
+  "pot": 50,
+  "players": 3,
+  "start_date": "1/1/2016",
+  "end_date": "7/1/2016",
+  "initiator": "Eric Thorne",
+  "goal": 10,
+  "time": 20,
+  "pledge": 20
 }
 ]

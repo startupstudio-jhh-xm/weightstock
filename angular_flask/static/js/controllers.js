@@ -76,7 +76,7 @@ var CreateController = function($scope, $location, $route, dataStore) {
     pool.end_date = pool.endDate.toLocaleDateString();
 
     pool.picture = '/static/img/jon-pool1.jpg';
-    dataStore.pools.push(formatPool(pool));
+    dataStore.pools.unshift(formatPool(pool));
 
     $location.path('/join/' + poolId);
   };

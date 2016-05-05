@@ -72,7 +72,6 @@
         <li class="tabs-title"><a href="#panel1" aria-selected="true">Backers</a></li>
         <!-- TODO: change this -->
         <li class="tabs-title is-active"><a href="#panel2">Progress</a></li>
-        <!-- TODO: make this more robust -->
         <!-- <li class="tabs-title" ng-show="{{ended.recents.length > 0}}"><a href="#panel3" ng-click="fireEnd()">Results</a></li> -->
       </ul>
 
@@ -135,6 +134,15 @@
                   <a> {{recent.dislikes}}</a>
                 </span>
               </div>
+              <div class="input-group">
+                <span class="input-group-button" >
+                  <i ng-show="{{(recent.likes - recent.dislikes) < 0}}" class="fi-dislike size-36"></i>
+                  <i ng-show="{{(recent.likes - recent.dislikes) > 0}}" class="fi-like size-36"></i>
+                </span>
+                <span class="input-group-label">
+                  <h4> Score: {{recent.likes - recent.dislikes}}</h4>
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -175,7 +183,7 @@
       </dl>
       <dl>
         <dt><a href="#">Community Fund:</a></dt>
-        <dd><h3>${{globalFund}}</h3></dd>
+        <dd><h3>${{ globalFund }}</h3></dd>
       </dl>
     </div>
   </div>

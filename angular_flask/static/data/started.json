@@ -8,6 +8,6 @@
   "pounds_lost": 15,
   "initial_weigh_in": 165,
   "next_weigh_in": "05/14/2016",
-  "recents": [{"date": "04/08/2016", "weight": 150, "photo": "/static/img/user-4.png"}, {"date": "03/10/2016", "weight": 155, "photo": "/static/img/user-3.png"}, {"date": "02/05/2016", "weight": 160, "photo": "/static/img/user-2.png"}, {"date": "01/07/2016", "weight": 165, "photo": "/static/img/user-1.png"}]
+  "recents": [{"date": "04/08/2016", "weight": 150, "photo": "/static/img/user-4.png", "likes": 4, "dislikes": 0}, {"date": "03/10/2016", "weight": 155, "photo": "/static/img/user-3.png", "likes": 3, "dislikes": 1}, {"date": "02/05/2016", "weight": 162, "photo": "/static/img/user-2.png", "likes": 0, "dislikes": 4}, {"date": "01/07/2016", "weight": 165, "photo": "/static/img/user-1.png", "likes": 1, "dislikes": 3}]
 }
 ]

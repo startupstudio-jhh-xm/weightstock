@@ -4,12 +4,12 @@
 </div>
 <div class="row" id="content">
   <div class="medium-10 columns">
-    <div class="row small-up-3 large-up-5">
+    <div class="row small-up-3 large-up-4">
       <div class="column" ng-repeat="pool in pools">
         <div class="panel panel-primary">
           <div class="panel-body">
             <!-- TODO: change this photo -->
-            <img class="thumbnail" ng-src="{{ pool.data.picture }}">
+            <a href="/join/{{$index}}" class="button radius expanded">Details</a>
             <table class = "hover">
               <tbody>
                 <tr>
@@ -38,13 +38,13 @@
                 </tr>
               </tbody>
             </table>
-            <a href="/join/{{$index}}" class="button radius expanded">Details</a>
+            <img class="thumbnail" height="100px" ng-src="{{ pool.data.picture }}">
           </div>
         </div>
       </div>
       <div class="column">
         <div class="panel panel-primary">
-          <a href="/create" class="warning button radius expanded">New Team</a>
+          <a href="/create" class="warning button radius expanded">Create A Team</a>
         </div>
       </div>
     </div>

@@ -14,12 +14,12 @@ angular.module('angularFlaskServices', ['ngResource'])
       dataStore.started = started;
       dataStore.ended = ended;
 
-      dataStore.globalFund = 12345;
+      dataStore.globalFund = 10123;
 
       dataStore.started.forEach(function(el) {
         el.recents.map(function(checkin) {
-          checkin.likes = 0;
-          checkin.dislikes = 0;
+          checkin.likes = checkin.likes || 0;
+          checkin.dislikes = checkin.dislikes || 0;
 
           return checkin;
         });
