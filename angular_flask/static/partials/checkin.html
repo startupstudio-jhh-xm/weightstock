@@ -22,7 +22,22 @@
 		    <div class="medium-8 large-centered columns">
 		      <label>Upload your picture:
 		        <label>
-					<input type="file" class="file-input"></label>
+					<input id = "src" type="file" class="file-input"></label>
+					<img id="target"/>
+					<script type="text/javascript">
+					function showImage(src,target) {
+  						var fr=new FileReader();
+  						fr.onload = function(e) { target.src = this.result; };
+  						src.addEventListener("change",function() {
+    						// fill fr with image data    
+    						fr.readAsDataURL(src.files[0]);
+  						});
+					}
+
+						var src = document.getElementById("src");
+						var target = document.getElementById("target");
+						showImage(src,target);
+					</script>
 		      </label>
 		    </div>
 		  </div>
