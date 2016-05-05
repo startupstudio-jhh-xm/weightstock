@@ -42,7 +42,6 @@ var CheckinController = function($scope, $location, $route, dataStore) {
   $scope.pool = dataStore.pools[poolId];
 
   $scope.weighIn = function() {
-    console.log('holla');
     var out = {};
     out.date = getDate();
     out.weight = $scope.weight;
@@ -51,6 +50,7 @@ var CheckinController = function($scope, $location, $route, dataStore) {
     out.dislikes = 0;
 
     dataStore.started[poolId].recents.unshift(out);
+    $location.path('/join/' + poolId);
   };
 };
 
@@ -74,7 +74,6 @@ var CreateController = function($scope, $location, $route, dataStore) {
     pool.initiator = 'Jonathan Huang';
     pool.start_date = pool.startDate.toLocaleDateString();
     pool.end_date = pool.endDate.toLocaleDateString();
-    console.log(pool);
 
     pool.picture = '/static/img/jon-pool1.jpg';
     dataStore.pools.push(formatPool(pool));
