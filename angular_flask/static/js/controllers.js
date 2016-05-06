@@ -121,21 +121,22 @@ var JoinController = function($scope, $location, $route, dataStore) {
     recent.dislikes++;
   };
 
+
   var normedWeightDist = $scope.started.recents.map(function(el) {
     return Math.abs(el.weight - dataStore.started[poolId].goal);
-  });
+  }).reverse();
 
   var minWeightDist = 0;
   var maxWeightDist = Math.max.apply(null, normedWeightDist);
 
   var scores = $scope.started.recents.map(function(el) {
     return (el.likes - el.dislikes >= 0) ? maxWeightDist : minWeightDist;
-  });
+  }).reverse();
 
   // graph stuff
   $scope.labels = $scope.started.recents.map(function(el) {
     return el.date;
-  });
+  }).reverse();
   $scope.data = [scores, normedWeightDist];
   $scope.series = ['Scaled Team Feedback', 'Distance from Goal'];
   $scope.options = {
