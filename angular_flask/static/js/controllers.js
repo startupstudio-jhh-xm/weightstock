@@ -45,7 +45,7 @@ var CheckinController = function($scope, $location, $route, dataStore) {
     var out = {};
     out.date = getDate();
     out.weight = $scope.weight;
-    out.photo = $scope.photo || '/static/img/weighin.png';
+    out.photo = $scope.photo || '/static/img/weighin.jpg';
     out.likes = 0;
     out.dislikes = 0;
 
