@@ -45,7 +45,7 @@ var CheckinController = function($scope, $location, $route, dataStore) {
     var out = {};
     out.date = getDate();
     out.weight = $scope.weight;
-    out.photo = $scope.photo || '/static/img/jon-pool1.jpg';
+    out.photo = $scope.photo || '/static/img/weighin.png';
     out.likes = 0;
     out.dislikes = 0;
 
@@ -76,7 +76,7 @@ var CreateController = function($scope, $location, $route, dataStore) {
     pool.end_date = pool.endDate.toLocaleDateString();
 
     pool.picture = '/static/img/jon-pool1.jpg';
-    dataStore.pools.unshift(formatPool(pool));
+    dataStore.pools.push(formatPool(pool));
 
     $location.path('/join/' + poolId);
   };
@@ -123,7 +123,7 @@ var JoinController = function($scope, $location, $route, dataStore) {
 
 
   var normedWeightDist = $scope.started.recents.map(function(el) {
-    return Math.abs(el.weight - dataStore.started[poolId].goal);
+    return el.weight - dataStore.started[poolId].goal;
   }).reverse();
 
   var minWeightDist = 0;
