@@ -81,7 +81,7 @@
           <div class="row medium-up-3 large-up-5">
             <div class="column" ng-repeat="friend in friends">
               <img class="thumbnail" ng-src="{{ friend.pic }}">
-              <h5>{{friend.name}} <small>${{pool.data.pledge/2}}</small></h5>
+              <h5>{{friend.name}} <small>${{(pool.data.pledge/friends.length).toFixed(2)}}</small></h5>
             </div>
           </div>
         </div>

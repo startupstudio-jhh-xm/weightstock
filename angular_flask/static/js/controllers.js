@@ -126,8 +126,8 @@ var JoinController = function($scope, $location, $route, dataStore) {
     return el.weight - dataStore.started[poolId].goal;
   }).reverse();
 
-  var minWeightDist = 0;
   var maxWeightDist = Math.max.apply(null, normedWeightDist);
+  var minWeightDist = Math.min(Math.min.apply(null, normedWeightDist), 0);
 
   var scores = $scope.started.recents.map(function(el) {
     return (el.likes - el.dislikes >= 0) ? maxWeightDist : minWeightDist;
