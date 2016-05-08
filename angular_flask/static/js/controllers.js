@@ -31,7 +31,7 @@ var getDate = function() {
       mm='0'+mm;
   }
 
-  today = dd+'/'+mm+'/'+yyyy;
+  today = mm+'/'+dd+'/'+yyyy;
 
   return today;
 };
