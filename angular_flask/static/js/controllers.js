@@ -50,6 +50,12 @@ var CheckinController = function($scope, $location, $route, dataStore) {
     out.dislikes = 0;
 
     dataStore.started[poolId].recents.unshift(out);
+    dataStore.started[poolId].last_weigh_in = $scope.weight;
+    dataStore.started[poolId].pounds_lost = dataStore.started[poolId].initial_weigh_in - $scope.weight;
+
+    var pctg = dataStore.started[poolId].pounds_lost / Math.abs(dataStore.started[poolId].goal - dataStore.started[poolId].initial_weigh_in)*100;
+    console.log(pctg);
+    dataStore.started[poolId].to_goal = (pctg > 100) ? 100 : pctg;
     $location.path('/join/' + poolId);
   };
 };
